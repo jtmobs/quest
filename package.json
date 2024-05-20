@@ -38,6 +38,7 @@
   "devDependencies": {
     "istanbul-lib-instrument": "^6.0.2",
     "istanbul-middleware-es": "2.2.0",
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "istanbul": "*"
   }
 }
