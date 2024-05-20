@@ -31,7 +31,8 @@
     "validator": "^13.11.0",
     "istanbul-middleware-es": "2.2.0",
     "istanbul-lib-instrument": "^6.0.2",
-    "istanbul": "*"
+    "istanbul": "*",
+    "express-session": "*"
   },
   "devDependencies": {
     "nodemon": "^3.0.1",
