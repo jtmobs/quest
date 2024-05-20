@@ -17,11 +17,7 @@ istanbulMiddleware.hookLoader(__dirname);
 
 // Expose coverage endpoint
 app.use('/coverage', istanbulMiddleware.createHandler({
-  coverageDir: 'coverage',
-  reportOpts: {
-    dir: 'coverage',
-    reporters: ['html'], // Ensure this is an allowed value
-  },
+  
   resetOnGet: true
 }));
 
