@@ -13,8 +13,8 @@
  * Date: 09, November 2023
  */
 
-function error(err, _, res) {
-  res.status(500).send({
+function error(err, _, res, _) {
+  res.send({
     acknowledgement: false,
     message: err.name,
     description: err.message,
