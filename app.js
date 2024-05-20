@@ -1,4 +1,5 @@
 const istanbulMiddleware = require('istanbul-middleware-es');
+const path = require('path');
 
 /* external imports */
 const express = require("express");
@@ -17,9 +18,16 @@ istanbulMiddleware.hookLoader(__dirname);
 
 // Expose coverage endpoint
 app.use('/coverage', istanbulMiddleware.createHandler({
-  
+  coverageDir: 'coverage', // Specify the directory for storing coverage reports
+  reportOpts: {
+    dir: 'coverage', // Directory for coverage reports
+    reporters: ['html'] // Report format
+  },
   resetOnGet: true
 }));
+
+// Serve static files from the coverage directory
+app.use('/coverage', express.static(path.join(__dirname, 'coverage')));
 
 // Setup session management
 app.use(session({
