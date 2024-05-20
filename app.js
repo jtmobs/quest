@@ -1,4 +1,3 @@
-
 const istanbulMiddleware = require('istanbul-middleware-es');
 
 /* external imports */
@@ -12,10 +11,19 @@ const error = require("./middleware/error.middleware");
 
 /* application level connection */
 const app = express();
+
 // Setup istanbul middleware
 istanbulMiddleware.hookLoader(__dirname);
+
 // Expose coverage endpoint
-app.use('/coverage', istanbulMiddleware.createHandler({ resetOnGet: true }));
+app.use('/coverage', istanbulMiddleware.createHandler({
+  coverageDir: 'coverage',
+  reportOpts: {
+    dir: 'coverage',
+    reporters: ['html'], // Ensure this is an allowed value
+  },
+  resetOnGet: true
+}));
 
 // Setup session management
 app.use(session({
