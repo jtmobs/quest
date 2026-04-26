@@ -4,7 +4,6 @@ const path = require('path');
 /* external imports */
 const express = require("express");
 const cors = require("cors");
-const session = require('express-session');
 require("dotenv").config();
 
 /* internal import */
@@ -28,14 +27,6 @@ app.use('/coverage', istanbulMiddleware.createHandler({
 
 // Serve static files from the coverage directory
 app.use('/coverage', express.static(path.join(__dirname, 'coverage')));
-
-// Setup session management
-app.use(session({
-    secret: 'c4a8bbe13eccaa377fddc919715abbb2',
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: process.env.NODE_ENV === 'production' }
-}));
 
 /* middleware connections */
 app.use(
